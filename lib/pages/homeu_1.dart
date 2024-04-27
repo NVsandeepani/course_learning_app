@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "Kalani Iresha",
+                          "vihara",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 22.0,
@@ -101,8 +101,8 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       
                   children: [
-                    //.................................................
-                  Material(
+                  //.................................................
+                   Material(
                      borderRadius: BorderRadius.circular(20.0),
                      elevation: 5.0,
                        
@@ -180,7 +180,7 @@ class _HomeState extends State<Home> {
                   ),
                          ],),
                ),
-               //................................................................
+     
                 //....................... 5th course........
                SizedBox(height: 20.0,),            
                Padding(

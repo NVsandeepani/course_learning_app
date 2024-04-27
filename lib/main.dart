@@ -1,4 +1,6 @@
 import 'package:course_learning_app/pages/homeu_1.dart';
+import 'package:course_learning_app/pages/quze1.dart';
+//import 'package:course_learning_app/pages/quze1.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+     title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
@@ -34,8 +36,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 1, 36, 39)),
         useMaterial3: true,
       ),
-      home:Home(),
-    );
+      home:Quiz1()
+    ); 
   }
 }
 
