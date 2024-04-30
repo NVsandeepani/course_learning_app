@@ -26,7 +26,7 @@ class _Quiz1State extends State<Quiz1> {
                    ),
                   ),
                   SizedBox(width:100.0),
- Text(
+                          Text(
                               "HTML",
                                   style: TextStyle(
                                   color: Color.fromARGB(255, 38, 3, 61),
