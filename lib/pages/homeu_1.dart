@@ -157,7 +157,7 @@ class _HomeState extends State<Home> {
                          child: Column(
                            children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height:10.0, width: 10.0,),
-                           Text( "Cyber Security",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                           Text( "Data Communication",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),
                        ),
                   ),
@@ -174,98 +174,15 @@ class _HomeState extends State<Home> {
                          child: Column(
                            children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height: 10.0, width: 10.0,),
-                           Text( "cryptography",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                           Text( "Network",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),
                        ),
                   ),
                          ],),
                ),
      
-                //....................... 5th course........
-               SizedBox(height: 20.0,),            
-               Padding(
-                 padding: const EdgeInsets.only(left: 20.0,right: 20.0),
-                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "Cyber Security",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
-                  ),
-                    //....................... 6th course........
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "cryptography",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
-                  ),
-                         ],),
-               ),
-               //............................................................
-               //...........7th............................
-               SizedBox(height: 20.0,),            
-               Padding(
-                 padding: const EdgeInsets.only(left: 20.0,right: 20.0),
-                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "Cyber Security",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
-                  ),
-                    //....................... 8th course........
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "cryptography",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
-                  ),
-                         ],),
-               ),
+                
+              
             ],
           ),
         ),
