@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
                        
                          child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
+                           children: [Image.asset("images/crypto.png",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height: 10.0, width: 10.0,),
                            Text( "cryptography",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),
@@ -155,7 +155,7 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
                        
                          child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
+                           children: [Image.asset("images/cate2.jpg",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height:10.0, width: 10.0,),
                            Text( "HTTML",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),
@@ -172,7 +172,7 @@ class _HomeState extends State<Home> {
                       decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
                        
                          child: Column(
-                           children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
+                           children: [Image.asset("images/cate3.jpg",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height: 10.0, width: 10.0,),
                            Text( "JAVA",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),

@@ -1,3 +1,4 @@
+import 'package:course_learning_app/service/DB.dart';
 import 'package:flutter/material.dart';
 
 class Adquize extends StatefulWidget {
@@ -8,6 +9,26 @@ class Adquize extends StatefulWidget {
 }
 
 class _AdquizeState extends State<Adquize> {
+
+uploadItem()async{
+  Map<String, dynamic> Adquize={
+    "Question": quizcontroller.text,
+    "option 1": option1controller.text,
+    "option 2": option2controller.text,
+    "option 3": option3controller.text,
+    "option 4": option4controller.text,
+    "Answer": correctcontroller.text,
+  };
+ await DataBaseMethods().addQuizeCategory(  Adquize, value!).then((value) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    backgroundColor: Color.fromARGB(255, 116, 2, 151),
+    content: Text(
+      "Quize Add Successful upload",style: TextStyle(color: const Color.fromARGB(255, 248, 247, 247), fontSize: 20.0, fontWeight: FontWeight.bold) ),));
+ }); 
+}
+
+
+
 
   String ? value;
 final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
@@ -172,19 +193,24 @@ final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
               ),  
               //................... inseert Add button ............
               SizedBox(height: 20.0),  
-                Center( child: Material(
-                  elevation: 5.0,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 5.0),
-                    width: 150,
-                    decoration: BoxDecoration(color: Color.fromARGB(255, 49, 2, 77), borderRadius: BorderRadius.circular(10),
+                GestureDetector(
+                  onTap: () {
+                    uploadItem();
+                  },
+                  child: Center( child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      width: 150,
+                      decoration: BoxDecoration(color: Color.fromARGB(255, 49, 2, 77), borderRadius: BorderRadius.circular(10),
+                      ),
+                    child: Center(
+                      child: Text("Add",style: TextStyle(color: const Color.fromARGB(255, 253, 251, 251), fontSize: 20.0, fontWeight: FontWeight.bold),),
+                    ),  
                     ),
-                  child: Center(
-                    child: Text("Add",style: TextStyle(color: const Color.fromARGB(255, 253, 251, 251), fontSize: 20.0, fontWeight: FontWeight.bold),),
-                  ),  
-                  ),
-                ),)  
+                  ),),
+                )  
             ],
           ),
         ),
