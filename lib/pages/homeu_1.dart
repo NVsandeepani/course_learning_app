@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:course_learning_app/pages/quze1.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -8,6 +10,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,38 +107,51 @@ class _HomeState extends State<Home> {
       
                   children: [
                   //.................................................
-                   Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/Cyber-Security-Icon-Concept-2-1.jpeg",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "Cyber Security",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
-                  ),
+                   GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: 
+                          (context)=> Quiz1(category: "Cyber Security",)));
+                        },
+                     child: Material(
+                       borderRadius: BorderRadius.circular(20.0),
+                       elevation: 5.0,
+                         
+                      child: Container(
+                        width: 150,
+                        padding:EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
+                         
+                           child: Column(
+                             children: [Image.asset("images/Cyber-Security-Icon-Concept-2-1.jpeg",height: 88, width: 88, fit: BoxFit.cover,),
+                              SizedBox(height: 10.0, width: 10.0,),
+                             Text( "Cyber Security",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                             ],),
+                         ),
+                                     ),
+                   ),
                   //....................... second course........
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/crypto.png",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "cryptography",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
+                  GestureDetector(
+                      onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: 
+                        (context)=> Quiz1(category: "cryptography",)));
+                        },
+
+                    child: Material(
+                       borderRadius: BorderRadius.circular(20.0),
+                       elevation: 5.0,
+                         
+                      child: Container(
+                        width: 150,
+                        padding:EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
+                         
+                           child: Column(
+                             children: [Image.asset("images/crypto.png",height: 88, width: 88, fit: BoxFit.cover,),
+                              SizedBox(height: 10.0, width: 10.0,),
+                             Text( "cryptography",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                             ],),
+                         ),
+                    ),
                   ),
                                    ],),
                ),
@@ -145,38 +163,51 @@ class _HomeState extends State<Home> {
                  child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/cate2.jpg",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height:10.0, width: 10.0,),
-                           Text( "HTTML",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
+                  GestureDetector(
+                    onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: 
+                        (context)=> Quiz1(category: "HTML",)));
+                        },
+                    child: Material(
+                       borderRadius: BorderRadius.circular(20.0),
+                       elevation: 5.0,
+                         
+                      child: Container(
+                        width: 150,
+                        padding:EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
+                         
+                           child: Column(
+                             children: [Image.asset("images/cate2.jpg",height: 88, width: 88, fit: BoxFit.cover,),
+                              SizedBox(height:10.0, width: 10.0,),
+                             Text( "HTTML",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                             ],),
+                         ),
+                    ),
                   ),
                     //....................... 4th course........
-                  Material(
-                     borderRadius: BorderRadius.circular(20.0),
-                     elevation: 5.0,
-                       
-                    child: Container(
-                      width: 150,
-                      padding:EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                       
-                         child: Column(
-                           children: [Image.asset("images/cate3.jpg",height: 88, width: 88, fit: BoxFit.cover,),
-                            SizedBox(height: 10.0, width: 10.0,),
-                           Text( "JAVA",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                           ],),
-                       ),
+                  GestureDetector(
+                      onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: 
+                        (context)=> Quiz1(category: "JAVA",)));
+                        },
+
+                    child: Material(
+                       borderRadius: BorderRadius.circular(20.0),
+                       elevation: 5.0,
+                         
+                      child: Container(
+                        width: 150,
+                        padding:EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
+                         
+                           child: Column(
+                             children: [Image.asset("images/cate3.jpg",height: 88, width: 88, fit: BoxFit.cover,),
+                              SizedBox(height: 10.0, width: 10.0,),
+                             Text( "JAVA",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                             ],),
+                         ),
+                    ),
                   ),
                          ],),
                ),

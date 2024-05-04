@@ -13,10 +13,10 @@ class _AdquizeState extends State<Adquize> {
 uploadItem()async{
   Map<String, dynamic> Adquize={
     "Question": quizcontroller.text,
-    "option 1": option1controller.text,
-    "option 2": option2controller.text,
-    "option 3": option3controller.text,
-    "option 4": option4controller.text,
+    "option1": option1controller.text,
+    "option2": option2controller.text,
+    "option3": option3controller.text,
+    "option4": option4controller.text,
     "Answer": correctcontroller.text,
   };
  await DataBaseMethods().addQuizeCategory(  Adquize, value!).then((value) {
@@ -76,7 +76,7 @@ final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
         //.............................answers......................
             
               SizedBox(height: 20.0),
-              Text("option 1", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
+              Text("option1", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
                    ),
                 SizedBox(height: 10.0),   
               Container(
@@ -97,7 +97,7 @@ final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
           //.............................answers......................
             
               SizedBox(height: 20.0),
-              Text("option 2", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
+              Text("option2", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
                    ),
                 SizedBox(height: 10.0),   
               Container(
@@ -117,7 +117,7 @@ final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
           //.............................answers......................
             
               SizedBox(height: 20.0),
-              Text("option 3", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
+              Text("option3", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
                    ),
                 SizedBox(height: 10.0),   
               Container(
@@ -137,7 +137,7 @@ final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
            //.............................answers......................
             
               SizedBox(height: 20.0),
-              Text("option 4", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
+              Text("option4", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
                    ),
                 SizedBox(height: 10.0),   
               Container(
