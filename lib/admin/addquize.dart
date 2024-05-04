@@ -10,7 +10,7 @@ class Adquize extends StatefulWidget {
 class _AdquizeState extends State<Adquize> {
 
   String ? value;
-final List<String> coursitem=['Cyber Security', 'cryptography', 'Data communication', 'Network'];
+final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
 
   TextEditingController quizcontroller= new TextEditingController();
   TextEditingController option1controller= new TextEditingController();

@@ -157,7 +157,7 @@ class _HomeState extends State<Home> {
                          child: Column(
                            children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height:10.0, width: 10.0,),
-                           Text( "Data Communication",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                           Text( "HTTML",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),
                        ),
                   ),
@@ -174,7 +174,7 @@ class _HomeState extends State<Home> {
                          child: Column(
                            children: [Image.asset("images/logo.png",height: 88, width: 88, fit: BoxFit.cover,),
                             SizedBox(height: 10.0, width: 10.0,),
-                           Text( "Network",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
+                           Text( "JAVA",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
                            ],),
                        ),
                   ),
