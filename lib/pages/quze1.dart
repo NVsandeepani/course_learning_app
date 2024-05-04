@@ -26,7 +26,7 @@ class _Quiz1State extends State<Quiz1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 236, 197, 234),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Container(
         child: Column(
           children: [
@@ -81,14 +81,48 @@ class _Quiz1State extends State<Quiz1> {
                             children: [
                               Text(data['Question']),
                               SizedBox(height: 8),
-                              Text('Option 1: ${data['option 1'] ?? ''}'),
-                              Text('Option 2: ${data['option 2'] ?? ''}'),
-                              Text('Option 3: ${data['option 3'] ?? ''}'),
-                              Text('Option 4: ${data['option 4'] ?? ''}'),
-                              SizedBox(height: 8),
-                              Text('Answer: ${data['Answer']}',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
+                                    Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        padding: EdgeInsets.all(15),   
+                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
+                                        child: 
+                                               Text(' ${data['option 1'] ?? ''}'),  
+                              
+                                     ),
+                                  SizedBox(height: 8),   
+                                  Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        padding: EdgeInsets.all(15),   
+                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
+                                        child: 
+                                               Text(' ${data['option 2'] ?? ''}'),  
+                              
+                                     ),
+                                  SizedBox(height: 8),      
+                                  Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        padding: EdgeInsets.all(15),   
+                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
+                                        child: 
+                                               Text(' ${data['option 3'] ?? ''}'),
+                              
+                                     ),
+                                  SizedBox(height: 8),
+                                  Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        padding: EdgeInsets.all(15),   
+                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
+                                        child: 
+                                               Text(' ${data['option 4'] ?? ''}'),
+                              
+                                     ),   
+                              
+                              
+                              
+                              //SizedBox(height: 8),
+                             // Text('Answer: ${data['Answer']}',
+                                 // style:
+                                      //TextStyle(fontWeight: FontWeight.bold)),
                             ],
                           ),
                         );
@@ -125,7 +159,7 @@ class DataBaseMethods {
     }
   }
 
-  Future<void> addQuizeCategory(
+  /*Future<void> addQuizeCategory(
       Map<String, dynamic> userQuizeCategory, String category) async {
     try {
       await FirebaseFirestore.instance
@@ -135,5 +169,5 @@ class DataBaseMethods {
     } catch (e) {
       print('Error adding quiz category: $e');
     }
-  }
+  }*/
 }
