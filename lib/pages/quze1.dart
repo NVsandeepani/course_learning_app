@@ -11,16 +11,58 @@ class Quiz1 extends StatefulWidget {
 }
 
 class _Quiz1State extends State<Quiz1> {
-  late Future<List<Map<String, dynamic>>> quizFuture;
+  late Future<List<DocumentSnapshot>> quizFuture;
+  DocumentSnapshot? lastDocument;
+  int currentPage = 0;
 
   @override
   void initState() {
     super.initState();
-    fetchCategoryQuiz();
+    quizFuture = fetchCategoryQuiz();
   }
 
-  fetchCategoryQuiz() async {
-    quizFuture = DataBaseMethods().getCategoryQuiz(widget.category);
+  Future<List<DocumentSnapshot>> fetchCategoryQuiz() async {
+    try {
+      Query query = FirebaseFirestore.instance.collection(widget.category);
+
+      // If lastDocument is provided, start after that document
+      if (lastDocument != null) {
+        query = query.startAfterDocument(lastDocument!);
+      }
+
+      // Limit the query to fetch only one document
+      query = query.limit(1);
+
+      // Execute the query
+      QuerySnapshot snapshot = await query.get();
+
+      // Update lastDocument for pagination
+      if (snapshot.docs.isNotEmpty) {
+        lastDocument = snapshot.docs.last;
+      }
+
+      return snapshot.docs;
+    } catch (e) {
+      print('Error fetching quiz: $e');
+      return [];
+    }
+  }
+
+  nextPage() {
+    setState(() {
+      currentPage++;
+      quizFuture = fetchCategoryQuiz();
+    });
+  }
+
+  previousPage() {
+    setState(() {
+      if (currentPage > 0) {
+        currentPage--;
+        lastDocument = null; // Reset lastDocument to fetch the previous page
+        quizFuture = fetchCategoryQuiz();
+      }
+    });
   }
 
   @override
@@ -63,7 +105,7 @@ class _Quiz1State extends State<Quiz1> {
             ),
             SizedBox(height: 20.0),
             Expanded(
-              child: FutureBuilder<List<Map<String, dynamic>>>(
+              child: FutureBuilder<List<DocumentSnapshot>>(
                 future: quizFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -71,63 +113,101 @@ class _Quiz1State extends State<Quiz1> {
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else {
-                    return ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        Map<String, dynamic> data = snapshot.data![index];
-                        return ListTile(
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    if (snapshot.data!.isEmpty) {
+                      return Center(child: Text('No questions available.'));
+                    } else {
+                      return Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                DocumentSnapshot document =
+                                    snapshot.data![index];
+                                Map<String, dynamic> data =
+                                    document.data() as Map<String, dynamic>;
+                                return ListTile(
+                                  title: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(data['Question']),
+                                      SizedBox(height: 8),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 4.0),
+                                        child: TextField(
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                            //labelText: 'Option 1',
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          controller: TextEditingController(
+                                              text: data['option1']),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 4.0),
+                                        child: TextField(
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                            //labelText: 'Option 2',
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          controller: TextEditingController(
+                                              text: data['option2']),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 4.0),
+                                        child: TextField(
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                            //labelText: 'Option 3',
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          controller: TextEditingController(
+                                              text: data['option3']),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 4.0),
+                                        child: TextField(
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                            //labelText: 'Option 4',
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          controller: TextEditingController(
+                                              text: data['option4']),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(data['Question']),
-                              SizedBox(height: 8),
-                                    Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.all(15),   
-                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
-                                        child: 
-                                               Text(' ${data['option 1'] ?? ''}'),  
-                              
-                                     ),
-                                  SizedBox(height: 8),   
-                                  Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.all(15),   
-                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
-                                        child: 
-                                               Text(' ${data['option 2'] ?? ''}'),  
-                              
-                                     ),
-                                  SizedBox(height: 8),      
-                                  Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.all(15),   
-                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
-                                        child: 
-                                               Text(' ${data['option 3'] ?? ''}'),
-                              
-                                     ),
-                                  SizedBox(height: 8),
-                                  Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.all(15),   
-                                        decoration: BoxDecoration(border: Border.all( color: Color.fromARGB(255, 88, 3, 105), width: 1.5), borderRadius: BorderRadius.circular(10)), 
-                                        child: 
-                                               Text(' ${data['option 4'] ?? ''}'),
-                              
-                                     ),   
-                              
-                              
-                              
-                              //SizedBox(height: 8),
-                             // Text('Answer: ${data['Answer']}',
-                                 // style:
-                                      //TextStyle(fontWeight: FontWeight.bold)),
+                              ElevatedButton(
+                                onPressed: previousPage,
+                                child: Text('Previous'),
+                              ),
+                              SizedBox(width: 10),
+                              ElevatedButton(
+                                onPressed: nextPage,
+                                child: Text('Next'),
+                              ),
                             ],
                           ),
-                        );
-                      },
-                    );
+                        ],
+                      );
+                    }
                   }
                 },
               ),
@@ -137,37 +217,4 @@ class _Quiz1State extends State<Quiz1> {
       ),
     );
   }
-}
-
-class DataBaseMethods {
-  Future<List<Map<String, dynamic>>> getCategoryQuiz(String category) async {
-    try {
-      QuerySnapshot snapshot = await FirebaseFirestore.instance
-          .collection(category)
-          .get(); // Assuming each category corresponds to a collection
-
-      List<Map<String, dynamic>> quizList = [];
-
-      snapshot.docs.forEach((document) {
-        quizList.add(document.data() as Map<String, dynamic>);
-      });
-
-      return quizList;
-    } catch (e) {
-      print('Error fetching quiz: $e');
-      return [];
-    }
-  }
-
-  /*Future<void> addQuizeCategory(
-      Map<String, dynamic> userQuizeCategory, String category) async {
-    try {
-      await FirebaseFirestore.instance
-          .collection(category)
-          .add(userQuizeCategory);
-      print('Quiz category added successfully.');
-    } catch (e) {
-      print('Error adding quiz category: $e');
-    }
-  }*/
 }

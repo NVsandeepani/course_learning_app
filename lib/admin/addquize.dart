@@ -9,212 +9,193 @@ class Adquize extends StatefulWidget {
 }
 
 class _AdquizeState extends State<Adquize> {
+  uploadItem() async {
+    Map<String, dynamic> Adquize = {
+      "Question": quizcontroller.text,
+      "option1": option1controller.text,
+      "option2": option2controller.text,
+      "option3": option3controller.text,
+      "option4": option4controller.text,
+      "Answer": correctcontroller.text,
+    };
+    await DataBaseMethods().addQuizeCategory(Adquize, value!).then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Color.fromARGB(255, 116, 2, 151),
+        content: Text(
+          "Quize Add Successful upload",
+          style: TextStyle(
+              color: const Color.fromARGB(255, 248, 247, 247),
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold),
+        ),
+      ));
+    });
+  }
 
-uploadItem()async{
-  Map<String, dynamic> Adquize={
-    "Question": quizcontroller.text,
-    "option1": option1controller.text,
-    "option2": option2controller.text,
-    "option3": option3controller.text,
-    "option4": option4controller.text,
-    "Answer": correctcontroller.text,
-  };
- await DataBaseMethods().addQuizeCategory(  Adquize, value!).then((value) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    backgroundColor: Color.fromARGB(255, 116, 2, 151),
-    content: Text(
-      "Quize Add Successful upload",style: TextStyle(color: const Color.fromARGB(255, 248, 247, 247), fontSize: 20.0, fontWeight: FontWeight.bold) ),));
- }); 
-}
+  String? value;
+  final List<String> coursitem = ['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
 
+  TextEditingController quizcontroller = TextEditingController();
+  TextEditingController option1controller = TextEditingController();
+  TextEditingController option2controller = TextEditingController();
+  TextEditingController option3controller = TextEditingController();
+  TextEditingController option4controller = TextEditingController();
+  TextEditingController correctcontroller = TextEditingController();
 
+  // Function to clear all text fields
+  void clearAllFields() {
+    quizcontroller.clear();
+    option1controller.clear();
+    option2controller.clear();
+    option3controller.clear();
+    option4controller.clear();
+    correctcontroller.clear();
+  }
 
-
-  String ? value;
-final List<String> coursitem=['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
-
-  TextEditingController quizcontroller= new TextEditingController();
-  TextEditingController option1controller= new TextEditingController();
-  TextEditingController option2controller= new TextEditingController();
-  TextEditingController option3controller= new TextEditingController();
-  TextEditingController option4controller= new TextEditingController();
-  TextEditingController correctcontroller= new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(   
+    return Scaffold(
       appBar: AppBar(
-        title: Text("Add Quiz", style: TextStyle(color: Color.fromARGB(255, 252, 251, 251), fontSize: 30.0, fontWeight: FontWeight.bold),
+        title: Text(
+          "Add Quiz",
+          style: TextStyle(
+              color: Color.fromARGB(255, 252, 251, 251),
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold),
         ),
-        backgroundColor:  Color.fromARGB(255, 70, 3, 97),
+        backgroundColor: Color.fromARGB(255, 70, 3, 97),
       ),
-      
-      body:  SingleChildScrollView(   
+      body: SingleChildScrollView(
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               SizedBox(height: 30.0),
-              Text("Question", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
-                   ),
-                SizedBox(height: 20.0),
-                   
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                 width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration( color: Color.fromARGB(255, 198, 177, 206),
-                              borderRadius: BorderRadius.circular(20),
-                              ),
-                child: TextField(controller:quizcontroller,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Enter your question",
-                    hintStyle: TextStyle(color: Color.fromARGB(255, 7, 7, 7), fontSize: 20.0, fontWeight: FontWeight.bold )
-                  ),
-                 ),
-                
-               ),
-        //.............................answers......................
-            
+              SizedBox(height: 30.0),
+              // TextField for Question
+              buildTextField(
+                controller: quizcontroller,
+                labelText: "Question",
+              ),
+
+              // TextFields for options
+              buildTextField(
+                controller: option1controller,
+                labelText: "Option 1",
+              ),
+              buildTextField(
+                controller: option2controller,
+                labelText: "Option 2",
+              ),
+              buildTextField(
+                controller: option3controller,
+                labelText: "Option 3",
+              ),
+              buildTextField(
+                controller: option4controller,
+                labelText: "Option 4",
+              ),
+
+              // TextField for correct answer
+              buildTextField(
+                controller: correctcontroller,
+                labelText: "Answer",
+              ),
+
+              // Dropdown for selecting category
               SizedBox(height: 20.0),
-              Text("option1", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
-                   ),
-                SizedBox(height: 10.0),   
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                 width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration( color: const Color.fromARGB(255, 184, 180, 180) ,
-                              borderRadius: BorderRadius.circular(20),
-                              ),
-                child: TextField(controller:option1controller,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Enter option 1",
-                    hintStyle: TextStyle(color: Color.fromARGB(255, 10, 10, 10), fontSize: 20.0, fontWeight: FontWeight.bold )
-                  ),
-                 ),
-                
-               ) ,          
-          //.............................answers......................
-            
-              SizedBox(height: 20.0),
-              Text("option2", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
-                   ),
-                SizedBox(height: 10.0),   
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                 width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration( color: const Color.fromARGB(255, 184, 180, 180) ,
-                              borderRadius: BorderRadius.circular(20),
-                              ),
-                child: TextField(controller:option2controller,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Enter option 2",
-                    hintStyle: TextStyle(color: Color.fromARGB(255, 10, 10, 10), fontSize: 20.0, fontWeight: FontWeight.bold )
-                  ),
-                 ),
-                 ) ,
-          //.............................answers......................
-            
-              SizedBox(height: 20.0),
-              Text("option3", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
-                   ),
-                SizedBox(height: 10.0),   
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                 width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration( color: const Color.fromARGB(255, 184, 180, 180) ,
-                              borderRadius: BorderRadius.circular(20),
-                              ),
-                child: TextField(controller:option3controller,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Enter option 3",
-                    hintStyle: TextStyle(color: Color.fromARGB(255, 10, 10, 10), fontSize: 20.0, fontWeight: FontWeight.bold )
-                  ),
-                 ),
-                ) ,
-           //.............................answers......................
-            
-              SizedBox(height: 20.0),
-              Text("option4", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
-                   ),
-                SizedBox(height: 10.0),   
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                 width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration( color: const Color.fromARGB(255, 184, 180, 180) ,
-                              borderRadius: BorderRadius.circular(20),
-                              ),
-                child: TextField(controller:option4controller,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Enter option 4",
-                    hintStyle: TextStyle(color: Color.fromARGB(255, 10, 10, 10), fontSize: 20.0, fontWeight: FontWeight.bold )
-                  ),
-                 ),
-                ) ,
-                //.............................correct answers......................
-            
-              SizedBox(height: 20.0),
-              Text("Answer", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
-                   ),
-                SizedBox(height: 10.0),   
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                 width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration( color: const Color.fromARGB(255, 184, 180, 180) ,
-                              borderRadius: BorderRadius.circular(20),
-                              ),
-                child: TextField(controller:correctcontroller,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Enter correct answer",
-                    hintStyle: TextStyle(color: Color.fromARGB(255, 10, 10, 10), fontSize: 20.0, fontWeight: FontWeight.bold )
-                  ),
-                 ),
-                ) ,    
-              // .............insert drop down button.....................
-              SizedBox(height: 20.0,),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(color: Color.fromARGB(255, 198, 177, 206), borderRadius: BorderRadius.circular(10),
-                    ),
-                child: DropdownButtonHideUnderline( child: DropdownButton<String>(items: coursitem.map((item)=>DropdownMenuItem(value:item, child: Text(item, style: TextStyle(fontSize: 18.0, color: Colors.black),))).toList(), onChanged: (value) => setState(() {
-                  this.value=value;
-                }),
-                dropdownColor: Colors.white,
-                hint: Text("Select Catogory"),
-                iconSize: 36,
-                icon: Icon(Icons.arrow_drop_down, color:Colors.black),
-                value: value,
-                )),
-              ),  
-              //................... inseert Add button ............
-              SizedBox(height: 20.0),  
-                GestureDetector(
-                  onTap: () {
-                    uploadItem();
-                  },
-                  child: Center( child: Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 5.0),
-                      width: 150,
-                      decoration: BoxDecoration(color: Color.fromARGB(255, 49, 2, 77), borderRadius: BorderRadius.circular(10),
-                      ),
-                    child: Center(
-                      child: Text("Add",style: TextStyle(color: const Color.fromARGB(255, 253, 251, 251), fontSize: 20.0, fontWeight: FontWeight.bold),),
-                    ),  
-                    ),
-                  ),),
-                )  
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 198, 177, 206),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    items: coursitem
+                        .map((item) => DropdownMenuItem(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: TextStyle(
+                                    fontSize: 18.0, color: Colors.black),
+                              ),
+                            ))
+                        .toList(),
+                    onChanged: (value) => setState(() {
+                      this.value = value;
+                    }),
+                    dropdownColor: Colors.white,
+                    hint: Text("Select Category"),
+                    iconSize: 36,
+                    icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                    value: value,
+                  ),
+                ),
+              ),
+
+              // Button to add the quiz
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      uploadItem();
+                    },
+                    child: Text("Add"),
+                  ),
+                  SizedBox(width: 20.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      clearAllFields();
+                    },
+                    child: Text("Clear All"),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  // Function to build TextField with clear button
+  Widget buildTextField({
+    required TextEditingController controller,
+    required String labelText,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 20.0),
+        Text(
+          labelText,
+          style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 184, 180, 180),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: "Enter $labelText",
+              hintStyle: TextStyle(
+                color: Color.fromARGB(255, 10, 10, 10),
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
