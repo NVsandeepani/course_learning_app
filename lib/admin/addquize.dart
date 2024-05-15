@@ -1,5 +1,5 @@
-import 'package:course_learning_app/service/DB.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Adquize extends StatefulWidget {
   const Adquize({super.key});
@@ -9,29 +9,6 @@ class Adquize extends StatefulWidget {
 }
 
 class _AdquizeState extends State<Adquize> {
-  uploadItem() async {
-    Map<String, dynamic> Adquize = {
-      "Question": quizcontroller.text,
-      "option1": option1controller.text,
-      "option2": option2controller.text,
-      "option3": option3controller.text,
-      "option4": option4controller.text,
-      "Answer": correctcontroller.text,
-    };
-    await DataBaseMethods().addQuizeCategory(Adquize, value!).then((value) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Color.fromARGB(255, 116, 2, 151),
-        content: Text(
-          "Quize Add Successful upload",
-          style: TextStyle(
-              color: const Color.fromARGB(255, 248, 247, 247),
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold),
-        ),
-      ));
-    });
-  }
-
   String? value;
   final List<String> coursitem = ['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
 
@@ -52,6 +29,55 @@ class _AdquizeState extends State<Adquize> {
     correctcontroller.clear();
   }
 
+  // Function to upload data to Firestore
+  uploadItem() async {
+    if (value == null) {
+      // Check if category is selected
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Please select a category"),
+      ));
+      return;
+    }
+
+    try {
+      Map<String, dynamic> adQuizeData = {
+        "Question": quizcontroller.text,
+        "option1": option1controller.text,
+        "option2": option2controller.text,
+        "option3": option3controller.text,
+        "option4": option4controller.text,
+        "Answer": correctcontroller.text,
+        "Category": value,
+      };
+
+      // Add data to Firestore
+      await FirebaseFirestore.instance
+          .collection('Quizes') // Change 'Quizes' to your Firestore collection name
+          .add(adQuizeData);
+
+      // Show success message
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Color.fromARGB(255, 116, 2, 151),
+        content: Text(
+          "Quiz added successfully!",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ));
+
+      // Clear all fields after successful upload
+      clearAllFields();
+    } catch (e) {
+      // Show error message if something goes wrong
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Failed to add quiz: $e"),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +93,7 @@ class _AdquizeState extends State<Adquize> {
       ),
       body: SingleChildScrollView(
         child: Container(
+          padding: EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -199,3 +226,4 @@ class _AdquizeState extends State<Adquize> {
     );
   }
 }
+

@@ -1,4 +1,5 @@
 import 'package:course_learning_app/admin/addquize.dart';
+import 'package:course_learning_app/admin/admin_homepage.dart';
 import 'package:course_learning_app/admin/adminlogin.dart';
 import 'package:course_learning_app/firebase_options.dart';
 import 'package:course_learning_app/pages/Learning_resources.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Adquize()
+      home: Home()
     ); 
   }
 }
