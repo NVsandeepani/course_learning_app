@@ -18,16 +18,15 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10.0,),
+            SizedBox(height: 20.0,),
             Text(
           "LOGIN",
-          style: TextStyle(
+            style: TextStyle(
             fontWeight: FontWeight.bold,
             color: const Color.fromARGB(255, 49, 1, 58),
             fontSize: 52,
           ),
-        ),/*SizedBox(height: 20.0,),
-            Text("buildup your own skills",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),*/
+        ),
             //....................................add email text feild....................
             SizedBox(height: 40.0,),
             Padding(
