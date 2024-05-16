@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Advideo extends StatefulWidget {
-  const Advideo({super.key});
+class Adzoomsessions extends StatefulWidget {
+  const Adzoomsessions({super.key});
 
   @override
-  State<Advideo> createState() => _AdvideoState();
+  State<Adzoomsessions> createState() => _AdzoomsessionsState();
 }
 
-class _AdvideoState extends State<Advideo> {
-  final List<String> courseItems = ['Cyber Security', 'Cryptography', 'HTML', 'JAVA'];
-  TextEditingController videoController = TextEditingController();
+class _AdzoomsessionsState extends State<Adzoomsessions> {
+   final List<String> courseItems = ['Cyber Security', 'Cryptography', 'HTML', 'JAVA'];
+  TextEditingController zoomsessionController = TextEditingController();
   String? selectedCategory;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Add Video",
+          "Add Zoom Session",
           style: TextStyle(
               color: Color.fromARGB(255, 252, 251, 251),
               fontSize: 30.0,
@@ -25,6 +24,7 @@ class _AdvideoState extends State<Advideo> {
         ),
         backgroundColor: Color.fromARGB(255, 70, 3, 97),
       ),
+        
       body: Container(
         margin: EdgeInsets.only(left: 20.0, right: 20.0),
         child: Column(
@@ -37,7 +37,7 @@ class _AdvideoState extends State<Advideo> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
-                controller: videoController,
+                controller: zoomsessionController,
                 decoration: InputDecoration(
                   hintText: 'Enter URL',
                   hintStyle: TextStyle(
@@ -96,6 +96,7 @@ class _AdvideoState extends State<Advideo> {
           ],
         ),
       ),
+
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:course_learning_app/Authentication/UserRegister.dart';
 import 'package:course_learning_app/admin/add_video.dart';
 import 'package:course_learning_app/admin/addquize.dart';
 import 'package:course_learning_app/admin/admin_homepage.dart';
-import 'package:course_learning_app/admin/adminlogin.dart';
 import 'package:course_learning_app/firebase_options.dart';
 import 'package:course_learning_app/pages/Learning_resources.dart';
 import 'package:course_learning_app/pages/homeu_1.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterPage()
+      home: Advideo()
     ); 
   }
 }

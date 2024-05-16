@@ -165,12 +165,13 @@ class _AdquizeState extends State<Adquize> {
               SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                
                 children: [
                   ElevatedButton(
                     onPressed: () {
                       uploadItem();
                     },
-                    child: Text("Add"),
+                    child: Text("Add"), 
                   ),
                   SizedBox(width: 20.0),
                   ElevatedButton(
