@@ -23,7 +23,9 @@ class _Quiz1State extends State<Quiz1> {
 
   Future<List<DocumentSnapshot>> fetchCategoryQuiz() async {
     try {
-      Query query = FirebaseFirestore.instance.collection(widget.category);
+      Query query = FirebaseFirestore.instance
+          .collection("Quizes")
+          .where("Category", isEqualTo: widget.category);
 
       // If lastDocument is provided, start after that document
       if (lastDocument != null) {
@@ -139,7 +141,6 @@ class _Quiz1State extends State<Quiz1> {
                                         child: TextField(
                                           readOnly: true,
                                           decoration: InputDecoration(
-                                            //labelText: 'Option 1',
                                             border: OutlineInputBorder(),
                                           ),
                                           controller: TextEditingController(
@@ -152,7 +153,6 @@ class _Quiz1State extends State<Quiz1> {
                                         child: TextField(
                                           readOnly: true,
                                           decoration: InputDecoration(
-                                            //labelText: 'Option 2',
                                             border: OutlineInputBorder(),
                                           ),
                                           controller: TextEditingController(
@@ -165,7 +165,6 @@ class _Quiz1State extends State<Quiz1> {
                                         child: TextField(
                                           readOnly: true,
                                           decoration: InputDecoration(
-                                            //labelText: 'Option 3',
                                             border: OutlineInputBorder(),
                                           ),
                                           controller: TextEditingController(
@@ -178,7 +177,6 @@ class _Quiz1State extends State<Quiz1> {
                                         child: TextField(
                                           readOnly: true,
                                           decoration: InputDecoration(
-                                            //labelText: 'Option 4',
                                             border: OutlineInputBorder(),
                                           ),
                                           controller: TextEditingController(

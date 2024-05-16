@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:course_learning_app/pages/learning_resources.dart';
-import 'package:course_learning_app/pages/quze1.dart';
+import 'package:course_learning_app/pages/Learning_resources.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -16,13 +14,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 246, 244, 247),
       body: SingleChildScrollView(
-        // Scroll view
-        child: Container(
-          //margin: EdgeInsets.only(bottom: 30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Stack(
+              children: [
                 Container(
                   height: 220,
                   padding: EdgeInsets.only(left: 20.0, top: 50.0),
@@ -92,212 +89,207 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 )
-              ]),
-              SizedBox(height: 30.0),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  "Top Courses Categorise",
-                  style: TextStyle(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold),
-                ),
+              ],
+            ),
+            SizedBox(height: 30.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                "Top Courses Categorise",
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold),
               ),
-              //   ........................start courses catogories.........................
-              SizedBox(
-                height: 20.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //.................................................
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LearningResources(),
-                            ));
-                      },
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        elevation: 5.0,
-                        child: Container(
-                          width: 150,
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 236, 226, 236),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "images/Cyber-Security-Icon-Concept-2-1.jpeg",
-                                height: 88,
-                                width: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 10.0,
-                                width: 10.0,
-                              ),
-                              Text(
-                                "Cyber Security",
-                                style: TextStyle(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+            ),
+            SizedBox(height: 20.0),
+            // Course categories
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Course category 1 - Cyber Security
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              LearningResources(category: "Cyber Security"),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
+                      child: Container(
+                        width: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 236, 226, 236),
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "images/Cyber-Security-Icon-Concept-2-1.jpeg",
+                              height: 88,
+                              width: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 10.0),
+                            Text(
+                              "Cyber Security",
+                              style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    //....................... second course........
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LearningResources(),
-                            ));
-                      },
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        elevation: 5.0,
-                        child: Container(
-                          width: 150,
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 236, 226, 236),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "images/crypto.png",
-                                height: 88,
-                                width: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 10.0,
-                                width: 10.0,
-                              ),
-                              Text(
-                                "cryptography",
-                                style: TextStyle(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+                  ),
+                  // Course category 2 - Cryptography
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              LearningResources(category: "cryptography"),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
+                      child: Container(
+                        width: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 236, 226, 236),
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "images/crypto.png",
+                              height: 88,
+                              width: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 10.0),
+                            Text(
+                              "Cryptography",
+                              style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              //............................................................................
-              //....................... 3rd course........
-              SizedBox(
-                height: 20.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LearningResources(),
-                            ));
-                      },
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        elevation: 5.0,
-                        child: Container(
-                          width: 150,
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 236, 226, 236),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "images/cate2.jpg",
-                                height: 88,
-                                width: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 10.0,
-                                width: 10.0,
-                              ),
-                              Text(
-                                "HTTML",
-                                style: TextStyle(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+            ),
+            SizedBox(height: 20.0),
+            // Course categories continued
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Course category 3 - HTML
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              LearningResources(category: "HTML"),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
+                      child: Container(
+                        width: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 236, 226, 236),
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "images/cate2.jpg",
+                              height: 88,
+                              width: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 10.0),
+                            Text(
+                              "HTML",
+                              style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    //....................... 4th course........
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LearningResources(),
-                            ));
-                      },
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        elevation: 5.0,
-                        child: Container(
-                          width: 150,
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 236, 226, 236),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "images/cate3.jpg",
-                                height: 88,
-                                width: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 10.0,
-                                width: 10.0,
-                              ),
-                              Text(
-                                "JAVA",
-                                style: TextStyle(
-                                    color: const Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+                  ),
+                  // Course category 4 - JAVA
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              LearningResources(category: "JAVA"),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
+                      child: Container(
+                        width: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 236, 226, 236),
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "images/cate3.jpg",
+                              height: 88,
+                              width: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                              width: 10.0,
+                            ),
+                            Text(
+                              "JAVA",
+                              style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:course_learning_app/pages/quze1.dart';
- class LearningResources extends StatefulWidget {
-   const LearningResources({super.key});
- 
-   @override
-   State<LearningResources> createState() => _LearningResourcesState();
- }
- 
- class _LearningResourcesState extends State<LearningResources> {
-   @override
-   Widget build(BuildContext context) {
-     return Scaffold(
+
+class LearningResources extends StatefulWidget {
+  final String category;
+
+  const LearningResources({Key? key, required this.category}) : super(key: key);
+
+  @override
+  State<LearningResources> createState() => _LearningResourcesState();
+}
+
+class _LearningResourcesState extends State<LearningResources> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Container(
         child: Column(
@@ -47,108 +49,124 @@ import 'package:course_learning_app/pages/quze1.dart';
                 ],
               ),
             ),
-
-
-
-        //................categories of learning resources.............
-        SizedBox(height: 50),
-        Padding(
-                 padding: const EdgeInsets.only(left: 20.0,right: 20.0),
-                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-        Material(
-                       borderRadius: BorderRadius.circular(20.0),
-                       elevation: 25.0,
-                         
+            SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Material(
+                    borderRadius: BorderRadius.circular(20.0),
+                    elevation: 25.0,
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      padding: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 236, 226, 236),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Text(
+                        "Video",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Material(
+                    borderRadius: BorderRadius.circular(20.0),
+                    elevation: 5.0,
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      padding: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 236, 226, 236),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Text(
+                        "PDF",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              Quiz1(category: widget.category),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
                       child: Container(
                         width: 150,
                         height: 150,
-                        padding:EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                         
-                           child:Text( "Video",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                             ),
-                         ),
-        Material(
-                       borderRadius: BorderRadius.circular(20.0),
-                       elevation: 5.0,
-                         
-                      child: Container(
-                        
-                        width: 150,
-                        height: 150,
-                        padding:EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                         
-                           child:
-                             
-                             Text( "PDF",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                             
-                         ),
-                    ),                 
-                  
-           ] )
-               ),
-
-         SizedBox(height: 20),
-        Padding(
-                 padding: const EdgeInsets.only(left: 20.0,right: 20.0),
-                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-        GestureDetector(
-            onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: 
-                        (context)=> Quiz1(category: "Quiz",)));
-            },
-
-
-          child: Material(
-                         borderRadius: BorderRadius.circular(20.0),
-                         elevation: 5.0,
-                           
-                        child: Container(
-                          width: 150,
-                          height: 150,
-                          padding:EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                           
-                             child:Text( "Quiz",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                               ),
-                           ),
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 236, 226, 236),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Quiz",
+                            style: TextStyle(
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Material(
+                    borderRadius: BorderRadius.circular(20.0),
+                    elevation: 5.0,
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      padding: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 236, 226, 236),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Text(
+                        "Zoom Session",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-        Material(
-                       borderRadius: BorderRadius.circular(20.0),
-                       elevation: 5.0,
-                         
-                      child: Container(
-                        
-                        width: 150,
-                        height: 150,
-                        padding:EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(color:Color.fromARGB(255, 236, 226, 236), borderRadius: BorderRadius.circular(20.0) ),
-                         
-                           child:
-                             
-                             Text( "Zoom Session",  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.0, fontWeight: FontWeight.bold),),
-                             
-                         ),
-                    ),                 
-                  
-           ] )
-               ),
-
-
-
-
-
-
-
-
-                      ])
       ),
-
-     );
-   }
- }
+    );
+  }
+}
