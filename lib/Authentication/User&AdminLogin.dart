@@ -10,9 +10,9 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 107, 107, 245),
+        backgroundColor: Color.fromARGB(255, 135, 9, 167),
       ),
-      backgroundColor: Color.fromARGB(255, 107, 107, 245),
+      backgroundColor: Color.fromARGB(255, 104, 5, 150),
       body: LoginForm(),
     );
   }
@@ -112,7 +112,7 @@ class _LoginFormState extends State<LoginForm> {
               },
               child: Text('Login', style: TextStyle(fontSize: 18)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
+                backgroundColor: const Color.fromARGB(255, 230, 83, 243),
                 padding: EdgeInsets.symmetric(vertical: 15.0),
               ),
             ),
