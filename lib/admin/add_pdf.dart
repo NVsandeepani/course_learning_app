@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Advideo extends StatefulWidget {
-  const Advideo({super.key});
+class Adpdf extends StatefulWidget {
+  const Adpdf({super.key});
 
   @override
-  State<Advideo> createState() => _AdvideoState();
+  State<Adpdf> createState() => _AdpdfState();
 }
 
-class _AdvideoState extends State<Advideo> {
+class _AdpdfState extends State<Adpdf> {
   final List<String> courseItems = ['Cyber Security', 'Cryptography', 'HTML', 'JAVA'];
-  TextEditingController videoController = TextEditingController();
+  TextEditingController pdfController = TextEditingController();
   String? selectedCategory;
 
   Future<void> saveVideoUrl(String url, String category) async {
     try {
-      // Save the video URL and category to Firestore
-      await FirebaseFirestore.instance.collection('videos').add({
+      // Save the pdf URL and category to Firestore
+      await FirebaseFirestore.instance.collection('PDF').add({
         'url': url,
         'category': category,
         'timestamp': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Video URL saved successfully')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('PDF URL saved successfully')));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to save video URL: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to save PDF URL: $e')));
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Add Video",
+          "Add PDF",
           style: TextStyle(
               color: Color.fromARGB(255, 252, 251, 251),
               fontSize: 30.0,
@@ -53,7 +54,7 @@ class _AdvideoState extends State<Advideo> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
-                controller: videoController,
+                controller: pdfController,
                 decoration: InputDecoration(
                   hintText: 'Enter URL',
                   hintStyle: TextStyle(
@@ -101,13 +102,12 @@ class _AdvideoState extends State<Advideo> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    if (videoController.text.isNotEmpty && selectedCategory != null) {
-                      saveVideoUrl(videoController.text, selectedCategory!);
+                    if (pdfController.text.isNotEmpty && selectedCategory != null) {
+                      saveVideoUrl(pdfController.text, selectedCategory!);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please enter a URL and select a category')));
                     }
                   },
-                  
                   child: Text("Add"),
                 ),
               ],

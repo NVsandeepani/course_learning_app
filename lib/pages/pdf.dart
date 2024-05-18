@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Vedio extends StatefulWidget {
-  const Vedio({super.key});
-                                
+class pdf extends StatefulWidget {
+  const pdf({super.key});
+
   @override
-  State<Vedio> createState() => _VedioState();
+  State<pdf> createState() => _pdfState();
 }
 
-class _VedioState extends State<Vedio> {
+class _pdfState extends State<pdf> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Container(
         child: Column(

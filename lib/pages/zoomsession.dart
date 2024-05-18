@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+class Zoomsession extends StatefulWidget {
+  const Zoomsession({super.key});
 
-class Vedio extends StatefulWidget {
-  const Vedio({super.key});
-                                
   @override
-  State<Vedio> createState() => _VedioState();
+  State<Zoomsession> createState() => _ZoomsessionState();
 }
 
-class _VedioState extends State<Vedio> {
+class _ZoomsessionState extends State<Zoomsession> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
