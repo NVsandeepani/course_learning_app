@@ -1,3 +1,6 @@
+import 'package:course_learning_app/Authentication/User&AdminLogin.dart';
+import 'package:course_learning_app/Authentication/UserRegister.dart';
+
 import 'package:flutter/material.dart';
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -61,18 +64,30 @@ class _StartPageState extends State<StartPage> {
                       ),
                           
                   SizedBox(height: 120.0,),
-               Padding(
-              padding: const EdgeInsets.symmetric(horizontal:25.0),
-                child: Container(
-                decoration: BoxDecoration(color: Color.fromARGB(255, 82, 6, 95), borderRadius: BorderRadius.circular(12), ),
-                  child: Padding(
-                  padding: const EdgeInsets.all(20),
-                    child: Center(
-                    child: Text("GET START ",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontWeight: FontWeight.bold,fontSize: 18),),
-                      ),
-                ),
-              ),
-            ),                 
+               GestureDetector(
+                onTap: () {
+                   Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ),
+                        );
+                },
+
+
+                 child: Padding(
+                             padding: const EdgeInsets.symmetric(horizontal:25.0),
+                  child: Container(
+                  decoration: BoxDecoration(color: Color.fromARGB(255, 82, 6, 95), borderRadius: BorderRadius.circular(12), ),
+                    child: Padding(
+                    padding: const EdgeInsets.all(20),
+                      child: Center(
+                      child: Text("GET START ",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontWeight: FontWeight.bold,fontSize: 18),),
+                        ),
+                  ),
+                             ),
+                           ),
+               ),                 
                                   
                                  
                         

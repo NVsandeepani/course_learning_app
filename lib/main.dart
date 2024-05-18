@@ -7,7 +7,6 @@ import 'package:course_learning_app/firebase_options.dart';
 import 'package:course_learning_app/pages/Learning_resources.dart';
 import 'package:course_learning_app/pages/StartPage.dart';
 import 'package:course_learning_app/pages/homeu_1.dart';
-import 'package:course_learning_app/pages/user_login.dart';
 import 'package:course_learning_app/pages/video.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
