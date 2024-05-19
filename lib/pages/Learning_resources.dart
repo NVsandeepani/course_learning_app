@@ -1,5 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:course_learning_app/pages/viewVideo.dart';
+import 'package:course_learning_app/pages/viewPdf.dart';
 import 'package:course_learning_app/pages/quze1.dart';
+import 'package:course_learning_app/pages/viewZoomsession.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LearningResources extends StatefulWidget {
   final String category;
@@ -55,44 +60,66 @@ class _LearningResourcesState extends State<LearningResources> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Material(
-                    borderRadius: BorderRadius.circular(20.0),
-                    elevation: 25.0,
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      padding: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 226, 236),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Text(
-                        "Video",
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              VideoList(category: widget.category),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 25.0,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 236, 226, 236),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text(
+                          "Video",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Material(
-                    borderRadius: BorderRadius.circular(20.0),
-                    elevation: 5.0,
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      padding: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 226, 236),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Text(
-                        "PDF",
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              PdfList(category: widget.category),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 236, 226, 236),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text(
+                          "PDF",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -140,23 +167,34 @@ class _LearningResourcesState extends State<LearningResources> {
                       ),
                     ),
                   ),
-                  Material(
-                    borderRadius: BorderRadius.circular(20.0),
-                    elevation: 5.0,
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      padding: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 236, 226, 236),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Text(
-                        "Zoom Session",
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ZoomSessionList(category: widget.category),
+                        ),
+                      );
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      elevation: 5.0,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        padding: EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 236, 226, 236),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text(
+                          "Zoom Session",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

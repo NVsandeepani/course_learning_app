@@ -9,22 +9,31 @@ class Advideo extends StatefulWidget {
 }
 
 class _AdvideoState extends State<Advideo> {
-  final List<String> courseItems = ['Cyber Security', 'Cryptography', 'HTML', 'JAVA'];
+  final List<String> courseItems = [
+    'Cyber Security',
+    'cryptography',
+    'HTML',
+    'JAVA'
+  ];
   TextEditingController videoController = TextEditingController();
+  TextEditingController topicController = TextEditingController();
   String? selectedCategory;
 
-  Future<void> saveVideoUrl(String url, String category) async {
+  Future<void> saveVideoUrl(String url, String category, String topic) async {
     try {
-      // Save the video URL and category to Firestore
+      // Save the video URL, category, and topic to Firestore
       await FirebaseFirestore.instance.collection('videos').add({
         'url': url,
         'category': category,
+        'topic': topic,
         'timestamp': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Video URL saved successfully')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Video URL saved successfully')));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to save video URL: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to save video URL: $e')));
     }
   }
 
@@ -46,6 +55,25 @@ class _AdvideoState extends State<Advideo> {
         child: Column(
           children: [
             SizedBox(height: 30),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              decoration: BoxDecoration(
+                color: Colors.white10,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextField(
+                controller: topicController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Topic',
+                  hintStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
@@ -101,13 +129,17 @@ class _AdvideoState extends State<Advideo> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    if (videoController.text.isNotEmpty && selectedCategory != null) {
-                      saveVideoUrl(videoController.text, selectedCategory!);
+                    if (videoController.text.isNotEmpty &&
+                        selectedCategory != null &&
+                        topicController.text.isNotEmpty) {
+                      saveVideoUrl(videoController.text, selectedCategory!,
+                          topicController.text);
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please enter a URL and select a category')));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              'Please enter a URL, topic, and select a category')));
                     }
                   },
-                  
                   child: Text("Add"),
                 ),
               ],

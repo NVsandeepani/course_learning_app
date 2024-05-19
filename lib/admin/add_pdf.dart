@@ -9,25 +9,33 @@ class Adpdf extends StatefulWidget {
 }
 
 class _AdpdfState extends State<Adpdf> {
-  final List<String> courseItems = ['Cyber Security', 'Cryptography', 'HTML', 'JAVA'];
+  final List<String> courseItems = [
+    'Cyber Security',
+    'cryptography',
+    'HTML',
+    'JAVA'
+  ];
   TextEditingController pdfController = TextEditingController();
+  TextEditingController topicController = TextEditingController();
   String? selectedCategory;
 
-  Future<void> saveVideoUrl(String url, String category) async {
+  Future<void> savePdfData(String url, String category, String topic) async {
     try {
-      // Save the pdf URL and category to Firestore
+      // Save the PDF URL, category, and topic to Firestore
       await FirebaseFirestore.instance.collection('PDF').add({
         'url': url,
         'category': category,
+        'topic': topic,
         'timestamp': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('PDF URL saved successfully')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('PDF data saved successfully')));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to save PDF URL: $e')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Failed to save PDF data: $e')));
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +55,25 @@ class _AdpdfState extends State<Adpdf> {
         child: Column(
           children: [
             SizedBox(height: 30),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              decoration: BoxDecoration(
+                color: Colors.white10,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextField(
+                controller: topicController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Topic',
+                  hintStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
@@ -102,10 +129,15 @@ class _AdpdfState extends State<Adpdf> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    if (pdfController.text.isNotEmpty && selectedCategory != null) {
-                      saveVideoUrl(pdfController.text, selectedCategory!);
+                    if (pdfController.text.isNotEmpty &&
+                        selectedCategory != null &&
+                        topicController.text.isNotEmpty) {
+                      savePdfData(pdfController.text, selectedCategory!,
+                          topicController.text);
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please enter a URL and select a category')));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              'Please enter a URL, topic, and select a category')));
                     }
                   },
                   child: Text("Add"),

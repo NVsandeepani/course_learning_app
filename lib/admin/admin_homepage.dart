@@ -1,3 +1,6 @@
+import 'package:course_learning_app/admin/add_pdf.dart';
+import 'package:course_learning_app/admin/add_video.dart';
+import 'package:course_learning_app/admin/add_zoomsession.dart';
 import 'package:course_learning_app/admin/addquize.dart';
 import 'package:flutter/material.dart';
 
@@ -149,7 +152,14 @@ class _AdminhomepageState extends State<Adminhomepage> {
                     //....................... Video ..................
 
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Advideo(),
+                          ),
+                        );
+                      },
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         elevation: 5.0,
@@ -197,7 +207,14 @@ class _AdminhomepageState extends State<Adminhomepage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Adpdf(),
+                          ),
+                        );
+                      },
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         elevation: 5.0,
@@ -233,7 +250,14 @@ class _AdminhomepageState extends State<Adminhomepage> {
                     ),
                     //....................... Zoom Session ........
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddZoomSession(),
+                          ),
+                        );
+                      },
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         elevation: 5.0,

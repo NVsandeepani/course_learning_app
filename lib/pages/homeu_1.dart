@@ -224,7 +224,7 @@ class _HomeState extends State<Home> {
                         child: Column(
                           children: [
                             Image.asset(
-                              "images/cate2.jpg",
+                              "images/cate9.png",
                               height: 88,
                               width: 88,
                               fit: BoxFit.cover,

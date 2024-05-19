@@ -54,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
               labelText: 'Email',
               labelStyle: TextStyle(color: Colors.white),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(10)
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white),
@@ -78,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
               labelText: 'Password',
               labelStyle: TextStyle(color: Colors.white),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(color: Colors.white), borderRadius: BorderRadius.circular(10)
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white),
@@ -114,6 +114,7 @@ class _LoginFormState extends State<LoginForm> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 230, 83, 243),
                 padding: EdgeInsets.symmetric(vertical: 15.0),
+                
               ),
             ),
           ),

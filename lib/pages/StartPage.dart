@@ -1,6 +1,4 @@
-import 'package:course_learning_app/Authentication/User&AdminLogin.dart';
 import 'package:course_learning_app/Authentication/UserRegister.dart';
-
 import 'package:flutter/material.dart';
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -69,7 +67,7 @@ class _StartPageState extends State<StartPage> {
                    Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => RegisterPage(),
                           ),
                         );
                 },
