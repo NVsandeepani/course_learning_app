@@ -192,9 +192,10 @@ class _Quiz1State extends State<Quiz1> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              
                               ElevatedButton(
                                 onPressed: previousPage,
-                                child: Text('Previous'),
+                                child: Text('Previous'), 
                               ),
                               SizedBox(width: 10),
                               ElevatedButton(
