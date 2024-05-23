@@ -1,6 +1,6 @@
 import 'package:course_learning_app/pages/viewVideo.dart';
 import 'package:course_learning_app/pages/viewPdf.dart';
-import 'package:course_learning_app/pages/quze1.dart';
+import 'package:course_learning_app/pages/viewQuiz.dart';
 import 'package:course_learning_app/pages/viewZoomsession.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

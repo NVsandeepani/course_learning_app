@@ -4,7 +4,6 @@ import 'package:course_learning_app/admin/add_video.dart';
 import 'package:course_learning_app/admin/addquize.dart';
 import 'package:course_learning_app/admin/admin_homepage.dart';
 import 'package:course_learning_app/firebase_options.dart';
-import 'package:course_learning_app/pages/Learning_resources.dart';
 import 'package:course_learning_app/pages/StartPage.dart';
 import 'package:course_learning_app/pages/homeu_1.dart';
 import 'package:firebase_core/firebase_core.dart';
