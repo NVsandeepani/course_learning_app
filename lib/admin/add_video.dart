@@ -54,7 +54,27 @@ class _AdvideoState extends State<Advideo> {
         margin: EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: [
-            SizedBox(height: 30),
+            
+          //......................................................................
+               Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 193, 175, 206),
+                     borderRadius: BorderRadius.circular(10)),
+                  margin: EdgeInsets.only(top: 40.0,left: 10.0, right: 10 ),
+                  child: Row(
+                    children: [
+                              Image.asset(
+                                "images/uploadvdio.jpg",
+                                height: 150,
+                                width: MediaQuery.of(context).size.width/1.2,
+                                fit: BoxFit.cover, 
+                              ),
+                    ]),),
+
+
+
+            //.........................................................................
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
@@ -95,6 +115,7 @@ class _AdvideoState extends State<Advideo> {
             SizedBox(height: 20.0),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 198, 177, 206),
                 borderRadius: BorderRadius.circular(10),
@@ -140,6 +161,13 @@ class _AdvideoState extends State<Advideo> {
                               'Please enter a URL, topic, and select a category')));
                     }
                   },
+                     style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 70, 3, 97), // Background color
+                              padding: EdgeInsets.symmetric(horizontal: 60, vertical: 12),
+                              shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                   child: Text("Add"),
                 ),
               ],

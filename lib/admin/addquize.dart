@@ -171,6 +171,14 @@ class _AdquizeState extends State<Adquize> {
                     onPressed: () {
                       uploadItem();
                     },
+                    
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 70, 3, 97), // Background color
+                              padding: EdgeInsets.symmetric(horizontal: 50),
+                              shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                     child: Text("Add"), 
                   ),
                   SizedBox(width: 20.0),
@@ -178,6 +186,14 @@ class _AdquizeState extends State<Adquize> {
                     onPressed: () {
                       clearAllFields();
                     },
+                    
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 70, 3, 97), // Background color
+                              padding: EdgeInsets.symmetric(horizontal: 50),
+                              shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                     child: Text("Clear All"),
                   ),
                 ],

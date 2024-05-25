@@ -71,6 +71,7 @@ Date: ${DateTime.now().toLocal().toString().split(' ')[0]}
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Quiz Completed'),
+        backgroundColor: Color.fromARGB(255, 86, 7, 100),
       ),
       body: Center(
         child: Padding(
@@ -97,7 +98,7 @@ Date: ${DateTime.now().toLocal().toString().split(' ')[0]}
                 style: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+                  color: Color.fromARGB(255, 165, 7, 228),
                 ),
               ),
               SizedBox(height: 20),
