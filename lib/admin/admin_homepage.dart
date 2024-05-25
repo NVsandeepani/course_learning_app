@@ -39,7 +39,7 @@ class _AdminhomepageState extends State<Adminhomepage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "Admin Panel",
+                            " Welcome to Admin Panel",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 22.0,
@@ -77,7 +77,7 @@ class _AdminhomepageState extends State<Adminhomepage> {
                             "for Buildup Your Skils ",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 14.0,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.w300),
                           ),
                         ],

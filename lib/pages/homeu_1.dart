@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
                         ClipRRect(
                             borderRadius: BorderRadius.circular(60),
                             child: Image.asset(
-                              "images/prof.jpg",
+                              "images/logo1.png",
                               height: 50,
                               width: 50,
                               fit: BoxFit.cover,
@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "vihara",
+                            "Edu Plus", 
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 22.0,
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "EduPlus",
+                            " Welcome To EduPlus ",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 22.0,
@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                             "for Buildup Your Skils ",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 14.0,
+                                fontSize: 12.0,
                                 fontWeight: FontWeight.w300),
                           ),
                         ],
