@@ -12,7 +12,7 @@ class RegisterPage extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 135, 9, 167),
       ),
       backgroundColor: Color.fromARGB(255, 104, 5, 150),
-      body: RegisterForm(),
+      body: SingleChildScrollView(child: RegisterForm()),
     );
   }
 }
@@ -113,6 +113,7 @@ class _RegisterFormState extends State<RegisterForm> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 230, 83, 243),
                 padding: EdgeInsets.symmetric(vertical: 15.0),
+                shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),),
               ),
             ),
           ),
@@ -134,6 +135,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   
                   backgroundColor: Color.fromARGB(255, 230, 83, 243),
                   padding: EdgeInsets.symmetric(vertical: 15.0),
+                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),),
                   
                 ),
               ),

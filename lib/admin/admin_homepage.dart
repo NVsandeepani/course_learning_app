@@ -51,7 +51,7 @@ class _AdminhomepageState extends State<Adminhomepage> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 32, 2, 53),
+                      color: Color.fromARGB(255, 49, 4, 82),
                       borderRadius: BorderRadius.circular(10)),
                   margin: EdgeInsets.only(top: 120.0, left: 10.0, right: 10),
                   child: Row(
@@ -60,7 +60,7 @@ class _AdminhomepageState extends State<Adminhomepage> {
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20)),
-                        child: Image.asset("images/h21.jpg"),
+                        child: Image.asset("images/13972594.png"),
                       ),
                       SizedBox(width: 10.0),
                       Column(
@@ -74,10 +74,10 @@ class _AdminhomepageState extends State<Adminhomepage> {
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "for Buildup Your Skils ",
+                            "Admin Panel ",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12.0,
+                                fontSize: 14.0,
                                 fontWeight: FontWeight.w300),
                           ),
                         ],

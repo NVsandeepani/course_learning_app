@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
                   height: 220,
                   padding: EdgeInsets.only(left: 20.0, top: 50.0),
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 74, 24, 107),
+                      color: Color.fromARGB(255, 95, 29, 116),
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20))),
@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "Edu Plus", 
+                            " Welcome to Edu Plus ", 
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 22.0,
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            " Welcome To EduPlus ",
+                            "  EduPlus ",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 22.0,
