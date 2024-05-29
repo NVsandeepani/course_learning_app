@@ -10,14 +10,21 @@ class Adquize extends StatefulWidget {
 
 class _AdquizeState extends State<Adquize> {
   String? value;
-  final List<String> coursitem = ['Cyber Security', 'cryptography', 'HTML', 'JAVA'];
+  final List<String> coursitem = [
+    'Cyber Security',
+    'Cryptography',
+    'HTML',
+    'JAVA'
+  ];
 
-  TextEditingController quizcontroller = TextEditingController();
-  TextEditingController option1controller = TextEditingController();
-  TextEditingController option2controller = TextEditingController();
-  TextEditingController option3controller = TextEditingController();
-  TextEditingController option4controller = TextEditingController();
-  TextEditingController correctcontroller = TextEditingController();
+  final TextEditingController quizcontroller = TextEditingController();
+  final TextEditingController option1controller = TextEditingController();
+  final TextEditingController option2controller = TextEditingController();
+  final TextEditingController option3controller = TextEditingController();
+  final TextEditingController option4controller = TextEditingController();
+  final TextEditingController correctcontroller = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // Function to clear all text fields
   void clearAllFields() {
@@ -29,15 +36,24 @@ class _AdquizeState extends State<Adquize> {
     correctcontroller.clear();
   }
 
-  // Function to upload data to Firestore
-  uploadItem() async {
-    if (value == null) {
-      // Check if category is selected
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Please select a category"),
-      ));
-      return;
+  // Function to validate all fields
+  bool validateFields() {
+    if (_formKey.currentState!.validate()) {
+      if (value == null) {
+        // Check if category is selected
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Please select a category"),
+        ));
+        return false;
+      }
+      return true;
     }
+    return false;
+  }
+
+  // Function to upload data to Firestore
+  Future<void> uploadItem() async {
+    if (!validateFields()) return;
 
     try {
       Map<String, dynamic> adQuizeData = {
@@ -52,7 +68,8 @@ class _AdquizeState extends State<Adquize> {
 
       // Add data to Firestore
       await FirebaseFirestore.instance
-          .collection('Quizes') // Change 'Quizes' to your Firestore collection name
+          .collection(
+              'Quizes') // Change 'Quizes' to your Firestore collection name
           .add(adQuizeData);
 
       // Show success message
@@ -94,118 +111,120 @@ class _AdquizeState extends State<Adquize> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 30.0),
-              // TextField for Question
-              buildTextField(
-                controller: quizcontroller,
-                labelText: "Question",
-              ),
-
-              // TextFields for options
-              buildTextField(
-                controller: option1controller,
-                labelText: "Option 1",
-              ),
-              buildTextField(
-                controller: option2controller,
-                labelText: "Option 2",
-              ),
-              buildTextField(
-                controller: option3controller,
-                labelText: "Option 3",
-              ),
-              buildTextField(
-                controller: option4controller,
-                labelText: "Option 4",
-              ),
-
-              // TextField for correct answer
-              buildTextField(
-                controller: correctcontroller,
-                labelText: "Answer",
-              ),
-
-              // Dropdown for selecting category
-              SizedBox(height: 20.0),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 198, 177, 206),
-                  borderRadius: BorderRadius.circular(10),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30.0),
+                // TextField for Question
+                buildTextField(
+                  controller: quizcontroller,
+                  labelText: "Question",
                 ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    items: coursitem
-                        .map((item) => DropdownMenuItem(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: TextStyle(
-                                    fontSize: 18.0, color: Colors.black),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (value) => setState(() {
-                      this.value = value;
-                    }),
-                    dropdownColor: Colors.white,
-                    hint: Text("Select Category"),
-                    iconSize: 36,
-                    icon: Icon(Icons.arrow_drop_down, color: Colors.black),
-                    value: value,
+
+                // TextFields for options
+                buildTextField(
+                  controller: option1controller,
+                  labelText: "Option 1",
+                ),
+                buildTextField(
+                  controller: option2controller,
+                  labelText: "Option 2",
+                ),
+                buildTextField(
+                  controller: option3controller,
+                  labelText: "Option 3",
+                ),
+                buildTextField(
+                  controller: option4controller,
+                  labelText: "Option 4",
+                ),
+
+                // TextField for correct answer
+                buildTextField(
+                  controller: correctcontroller,
+                  labelText: "Answer",
+                ),
+
+                // Dropdown for selecting category
+                SizedBox(height: 20.0),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 198, 177, 206),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                ),
-              ),
-
-              // Button to add the quiz
-              SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      uploadItem();
-                    },
-                    
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 70, 3, 97), // Background color
-                              padding: EdgeInsets.symmetric(horizontal: 50),
-                              shape: RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(10),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      items: coursitem
+                          .map((item) => DropdownMenuItem(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.black),
+                                ),
+                              ))
+                          .toList(),
+                      onChanged: (value) => setState(() {
+                        this.value = value;
+                      }),
+                      dropdownColor: Colors.white,
+                      hint: Text("Select Category"),
+                      iconSize: 36,
+                      icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                      value: value,
                     ),
                   ),
-                    child: Text("Add"), 
-                  ),
-                  SizedBox(width: 20.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      clearAllFields();
-                    },
-                    
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 70, 3, 97), // Background color
-                              padding: EdgeInsets.symmetric(horizontal: 50),
-                              shape: RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(10),
+                ),
+
+                // Button to add the quiz
+                SizedBox(height: 20.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        uploadItem();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Color.fromARGB(255, 70, 3, 97), // Background color
+                        padding: EdgeInsets.symmetric(horizontal: 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text("Add"),
                     ),
-                  ),
-                    child: Text("Clear All"),
-                  ),
-                ],
-              ),
-            ],
+                    SizedBox(width: 20.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        clearAllFields();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Color.fromARGB(255, 70, 3, 97), // Background color
+                        padding: EdgeInsets.symmetric(horizontal: 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text("Clear All"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  // Function to build TextField with clear button
+  // Function to build TextField with validation
   Widget buildTextField({
     required TextEditingController controller,
     required String labelText,
@@ -216,7 +235,8 @@ class _AdquizeState extends State<Adquize> {
         SizedBox(height: 20.0),
         Text(
           labelText,
-          style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w500),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -226,8 +246,14 @@ class _AdquizeState extends State<Adquize> {
             color: const Color.fromARGB(255, 184, 180, 180),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: TextField(
+          child: TextFormField(
             controller: controller,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Please enter $labelText";
+              }
+              return null;
+            },
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: "Enter $labelText",
@@ -243,4 +269,3 @@ class _AdquizeState extends State<Adquize> {
     );
   }
 }
-

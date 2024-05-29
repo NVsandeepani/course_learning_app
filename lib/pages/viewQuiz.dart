@@ -1,7 +1,9 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:course_learning_app/pages/score.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'certificate.dart'; // Import CertificatePage
+// Import CertificatePage
 
 class Quiz1 extends StatefulWidget {
   final String category;

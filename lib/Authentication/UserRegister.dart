@@ -4,63 +4,78 @@ import 'package:course_learning_app/Authentication/User&AdminLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+// This is the main widget for the registration page
 class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 135, 9, 167),
+        // Sets the background color of the AppBar
+        backgroundColor: Color.fromARGB(255, 151, 9, 170),
       ),
-      backgroundColor: Color.fromARGB(255, 104, 5, 150),
+      // Sets the background color of the Scaffold
+      backgroundColor: Color.fromARGB(255, 151, 9, 170),
+      // The body of the Scaffold contains the RegisterForm widget
       body: SingleChildScrollView(child: RegisterForm()),
     );
   }
 }
 
+// This widget contains the registration form
 class RegisterForm extends StatefulWidget {
   @override
   _RegisterFormState createState() => _RegisterFormState();
 }
 
+// This is the state class for RegisterForm
 class _RegisterFormState extends State<RegisterForm> {
+  // Controllers to manage the text input for email and password
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  // FirebaseAuth instance to handle authentication
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  // Variables to store error messages for email and password fields
   String? _emailError;
   String? _passwordError;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(10.0),
+      // Column to arrange the widgets vertically
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
             'User Registration',
+            // Styling for the header text
             style: TextStyle(
               color: Colors.white,
               fontSize: 30.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 30.0), // Adds space between the widgets
           TextFormField(
             controller: _emailController,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white), // Sets the text color
             decoration: InputDecoration(
               labelText: 'Email',
-              labelStyle: TextStyle(color: Colors.white),
+              labelStyle:
+                  TextStyle(color: Colors.white), // Sets the label color
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(
+                    color: Colors.white), // Border color when enabled
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(
+                    color: Colors.white), // Border color when focused
               ),
-              errorText: _emailError,
+              errorText: _emailError, // Displays error text if any
             ),
-            keyboardType: TextInputType.emailAddress,
+            keyboardType:
+                TextInputType.emailAddress, // Keyboard type for email input
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter your email';
@@ -68,21 +83,24 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 20.0), // Adds space between the widgets
           TextFormField(
             controller: _passwordController,
-            style: TextStyle(color: Colors.white),
-            obscureText: true,
+            style: TextStyle(color: Colors.white), // Sets the text color
+            obscureText: true, // Hides the text being entered
             decoration: InputDecoration(
               labelText: 'Password',
-              labelStyle: TextStyle(color: Colors.white),
+              labelStyle:
+                  TextStyle(color: Colors.white), // Sets the label color
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(
+                    color: Colors.white), // Border color when enabled
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(
+                    color: Colors.white), // Border color when focused
               ),
-              errorText: _passwordError,
+              errorText: _passwordError, // Displays error text if any
             ),
             validator: (value) {
               if (value!.isEmpty) {
@@ -91,11 +109,12 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 30.0), // Adds space between the widgets
           SizedBox(
-            width: double.infinity,
+            width: double.infinity, // Makes the button full width
             child: ElevatedButton(
               onPressed: () {
+                // Sets error messages if the fields are empty
                 setState(() {
                   _emailError = _emailController.text.isEmpty
                       ? 'Please enter your email'
@@ -105,22 +124,25 @@ class _RegisterFormState extends State<RegisterForm> {
                       : null;
                 });
 
+                // Calls the registerUser function if there are no errors
                 if (_emailError == null && _passwordError == null) {
                   registerUser();
                 }
               },
-              child: Text('Register', style: TextStyle(fontSize: 18)),
+              child: Text('Register',
+                  style: TextStyle(fontSize: 18)), // Button text style
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 230, 83, 243),
-                padding: EdgeInsets.symmetric(vertical: 15.0),
-                shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),),
+                backgroundColor: Color.fromARGB(255, 100, 92, 92), // Button background color
+                padding: EdgeInsets.symmetric(vertical: 15.0), // Button padding
+                 shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:
+                const EdgeInsets.all(8.0), // Adds padding around the button
             child: SizedBox(
-              width: double.infinity,
+              width: double.infinity, // Makes the button full width
               child: ElevatedButton(
                 onPressed: () {
                   // Navigate to LoginPage when the button is pressed
@@ -129,14 +151,13 @@ class _RegisterFormState extends State<RegisterForm> {
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
-                child: Text('Login', style: TextStyle(fontSize: 18), ), 
+                child: Text('Login',
+                    style: TextStyle(fontSize: 18)), // Button text style
                 style: ElevatedButton.styleFrom(
-                  
-                  
-                  backgroundColor: Color.fromARGB(255, 230, 83, 243),
-                  padding: EdgeInsets.symmetric(vertical: 15.0),
-                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),),
-                  
+                  backgroundColor: const Color.fromARGB(255, 73, 69, 69), // Button background color
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.0), 
+                       shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20),),// Button padding
                 ),
               ),
             ),
@@ -146,33 +167,39 @@ class _RegisterFormState extends State<RegisterForm> {
     );
   }
 
+  // Function to register the user using FirebaseAuth
   void registerUser() async {
     String email = _emailController.text.trim();
     String password = _passwordController.text;
 
     try {
+      // Tries to create a user with the provided email and password
       await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      // Shows a success dialog if the registration is successful
       _showMessageDialog(context, 'Success', 'User registered successfully!');
     } catch (e) {
+      // Shows an error dialog if the registration fails
       _showMessageDialog(context, 'Error', 'Failed to register user: $e');
     }
   }
 
+  // Function to show a message dialog
   Future<void> _showMessageDialog(
       BuildContext context, String title, String message) async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible:
+          false, // Prevents dismissing the dialog by tapping outside
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(title),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(message),
+                Text(message), // Message content
               ],
             ),
           ),
@@ -180,7 +207,7 @@ class _RegisterFormState extends State<RegisterForm> {
             TextButton(
               child: Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Closes the dialog
               },
             ),
           ],
@@ -191,6 +218,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   void dispose() {
+    // Disposes the controllers when the widget is disposed
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();

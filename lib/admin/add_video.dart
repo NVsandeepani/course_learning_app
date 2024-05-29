@@ -98,7 +98,7 @@ class _AdvideoState extends State<Advideo> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 decoration: BoxDecoration(
-                  color: Colors.white10,
+                 color: Colors.white10,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextField(
