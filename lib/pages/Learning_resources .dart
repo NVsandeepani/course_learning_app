@@ -81,12 +81,14 @@ class _LearningResourcesState extends State<LearningResources> {
                           color: Color.fromARGB(255, 236, 226, 236),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        child: Text(
-                          "Video",
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
+                        child: Center(
+                          child: Text(
+                            "Video",
+                            style: TextStyle(
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -113,12 +115,14 @@ class _LearningResourcesState extends State<LearningResources> {
                           color: Color.fromARGB(255, 236, 226, 236),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        child: Text(
-                          "PDF",
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
+                        child: Center(
+                          child: Text(
+                            "PDF",
+                            style: TextStyle(
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -188,12 +192,14 @@ class _LearningResourcesState extends State<LearningResources> {
                           color: Color.fromARGB(255, 236, 226, 236),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        child: Text(
-                          "Zoom Session",
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
+                        child: Center(
+                          child: Text(
+                            "Zoom Session",
+                            style: TextStyle(
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
